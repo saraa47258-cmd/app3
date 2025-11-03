@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Wish List Smart</string>
+    <string name="wishlist_title">قائمة أمنياتي</string>
+    <string name="budget_title">الميزانية</string>
+    <string name="offers_title">العروض</string>
+    <string name="add_product">إضافة منتج</string>
+</resources>
