@@ -342,3 +342,4 @@ suggestedSaving = availableIncome × 30%
 **استمتع باستخدام Wish List Smart! 🎁✨**
 
 
+

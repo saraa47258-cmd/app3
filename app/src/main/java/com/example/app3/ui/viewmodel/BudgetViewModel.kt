@@ -77,12 +77,12 @@ class BudgetViewModel(private val repository: WishListRepository) : ViewModel() 
             _isSaving.value = true
             try {
                 val budgetData = Budget(
-                    id = 1,
-                    monthlyIncome = monthlyIncome.value.toDoubleOrNull() ?: 0.0,
-                    monthlySaving = monthlySaving.value.toDoubleOrNull() ?: 0.0,
-                    fixedExpenses = fixedExpenses.value.toDoubleOrNull() ?: 0.0,
-                    currency = currency.value,
-                    lastUpdated = System.currentTimeMillis()
+                    1,
+                    monthlyIncome.value.toDoubleOrNull() ?: 0.0,
+                    monthlySaving.value.toDoubleOrNull() ?: 0.0,
+                    fixedExpenses.value.toDoubleOrNull() ?: 0.0,
+                    currency.value,
+                    System.currentTimeMillis()
                 )
                 repository.insertBudget(budgetData)
                 onSuccess()
@@ -111,5 +111,6 @@ class BudgetViewModelFactory(private val repository: WishListRepository) :
         throw IllegalArgumentException("Unknown ViewModel class")
     }
 }
+
 
 

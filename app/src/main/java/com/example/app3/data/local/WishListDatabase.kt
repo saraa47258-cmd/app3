@@ -11,7 +11,7 @@ import com.example.app3.data.model.Product
 
 @Database(
     entities = [Product::class, Budget::class, Offer::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 @TypeConverters(Converters::class)

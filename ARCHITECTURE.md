@@ -260,3 +260,4 @@ UI → ViewModel → Repository → DAO → Database
 - Offline-first architecture
 
 
+

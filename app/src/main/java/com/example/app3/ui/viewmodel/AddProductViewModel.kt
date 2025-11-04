@@ -79,13 +79,13 @@ class AddProductViewModel(private val repository: WishListRepository) : ViewMode
             _isSaving.value = true
             try {
                 val product = Product(
-                    name = name.value.trim(),
-                    price = price.value.toDouble(),
-                    category = category.value,
-                    priority = priority.value,
-                    imageUri = imageUri.value,
-                    productUrl = productUrl.value.ifBlank { null },
-                    notes = notes.value.ifBlank { null }
+                    name.value.trim(),
+                    price.value.toDouble(),
+                    category.value,
+                    priority.value,
+                    imageUri.value,
+                    productUrl.value.ifBlank { null },
+                    notes.value.ifBlank { null }
                 )
                 repository.insertProduct(product)
                 _saveSuccess.value = true
@@ -124,5 +124,6 @@ class AddProductViewModelFactory(private val repository: WishListRepository) :
         throw IllegalArgumentException("Unknown ViewModel class")
     }
 }
+
 
 

@@ -37,31 +37,31 @@ class OffersViewModel(private val repository: WishListRepository) : ViewModel() 
         viewModelScope.launch {
             val sampleOffers = listOf(
                 Offer(
-                    productName = "آيفون 15 برو",
-                    discountPercentage = 15,
-                    originalPrice = 5000.0,
-                    discountedPrice = 4250.0,
-                    offerUrl = "https://example.com",
-                    expiryDate = System.currentTimeMillis() + (30L * 24 * 60 * 60 * 1000),
-                    source = "متجر الكتروني"
+                    "آيفون 15 برو",
+                    15,
+                    5000.0,
+                    4250.0,
+                    "https://example.com",
+                    System.currentTimeMillis() + (30L * 24 * 60 * 60 * 1000),
+                    "متجر الكتروني"
                 ),
                 Offer(
-                    productName = "سماعات AirPods Pro",
-                    discountPercentage = 20,
-                    originalPrice = 999.0,
-                    discountedPrice = 799.0,
-                    offerUrl = "https://example.com",
-                    expiryDate = System.currentTimeMillis() + (15L * 24 * 60 * 60 * 1000),
-                    source = "عرض خاص"
+                    "سماعات AirPods Pro",
+                    20,
+                    999.0,
+                    799.0,
+                    "https://example.com",
+                    System.currentTimeMillis() + (15L * 24 * 60 * 60 * 1000),
+                    "عرض خاص"
                 ),
                 Offer(
-                    productName = "ساعة Apple Watch",
-                    discountPercentage = 10,
-                    originalPrice = 1800.0,
-                    discountedPrice = 1620.0,
-                    offerUrl = "https://example.com",
-                    expiryDate = System.currentTimeMillis() + (7L * 24 * 60 * 60 * 1000),
-                    source = "تخفيض موسمي"
+                    "ساعة Apple Watch",
+                    10,
+                    1800.0,
+                    1620.0,
+                    "https://example.com",
+                    System.currentTimeMillis() + (7L * 24 * 60 * 60 * 1000),
+                    "تخفيض موسمي"
                 )
             )
             
@@ -83,5 +83,6 @@ class OffersViewModelFactory(private val repository: WishListRepository) :
         throw IllegalArgumentException("Unknown ViewModel class")
     }
 }
+
 
 

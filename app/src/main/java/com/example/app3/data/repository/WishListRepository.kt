@@ -80,10 +80,10 @@ class WishListRepository(
         }
 
         return ProductWithProgress(
-            product = product,
-            monthsNeeded = monthsNeeded,
-            progressPercentage = progressPercentage,
-            estimatedDate = estimatedDate
+            product,
+            monthsNeeded,
+            progressPercentage,
+            estimatedDate
         )
     }
 
@@ -107,5 +107,6 @@ class WishListRepository(
     
     suspend fun deactivateExpiredOffers() = offerDao.deactivateExpiredOffers()
 }
+
 
 
