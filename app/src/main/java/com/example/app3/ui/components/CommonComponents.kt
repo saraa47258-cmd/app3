@@ -19,6 +19,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.app3.ui.theme.Primary
 import com.example.app3.ui.theme.TextSecondary
+import androidx.compose.ui.tooling.preview.Preview
+import com.example.app3.ui.theme.WishListSmartTheme
 
 @Composable
 fun EmptyStateView(
@@ -182,5 +184,108 @@ fun CategoryChip(
         modifier = modifier,
         shape = RoundedCornerShape(8.dp)
     )
+}
+
+// ============================================
+// Preview Functions
+// ============================================
+
+@Preview(showBackground = true)
+@Composable
+fun EmptyStateViewPreview() {
+    WishListSmartTheme {
+        Surface {
+            EmptyStateView(
+                icon = Icons.Default.ShoppingBag,
+                title = "قائمتك فارغة",
+                subtitle = "ابدأ بإضافة المنتجات التي تحلم بشرائها",
+                actionText = "إضافة منتج",
+                onActionClick = {}
+            )
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun GradientCardPreview() {
+    WishListSmartTheme {
+        Surface(modifier = Modifier.padding(16.dp)) {
+            GradientCard(
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Column {
+                    Text(
+                        "بطاقة متدرجة",
+                        style = MaterialTheme.typography.titleLarge,
+                        color = Color.White,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        "هذا نموذج لبطاقة بخلفية متدرجة جميلة",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = Color.White.copy(alpha = 0.9f)
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PriorityChipsPreview() {
+    WishListSmartTheme {
+        Surface(modifier = Modifier.padding(16.dp)) {
+            Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                Text("مستويات الأولوية:", style = MaterialTheme.typography.titleMedium)
+                
+                PriorityChip(priority = com.example.app3.data.model.Priority.HIGH)
+                PriorityChip(priority = com.example.app3.data.model.Priority.MEDIUM)
+                PriorityChip(priority = com.example.app3.data.model.Priority.LOW)
+            }
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun LoadingViewPreview() {
+    WishListSmartTheme {
+        Surface {
+            LoadingView()
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun CategoryChipsPreview() {
+    WishListSmartTheme {
+        Surface(modifier = Modifier.padding(16.dp)) {
+            Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                Text("الفئات:", style = MaterialTheme.typography.titleMedium)
+                
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    CategoryChip(
+                        category = "تقنية",
+                        isSelected = true,
+                        onClick = {}
+                    )
+                    CategoryChip(
+                        category = "ملابس",
+                        isSelected = false,
+                        onClick = {}
+                    )
+                    CategoryChip(
+                        category = "منزلية",
+                        isSelected = false,
+                        onClick = {}
+                    )
+                }
+            }
+        }
+    }
 }
 

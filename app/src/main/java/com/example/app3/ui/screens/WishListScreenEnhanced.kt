@@ -38,6 +38,9 @@ import com.example.app3.ui.theme.*
 import com.example.app3.ui.viewmodel.WishListViewModel
 import kotlin.math.abs
 import kotlin.math.min
+import androidx.compose.ui.tooling.preview.Preview
+import com.example.app3.data.model.Product
+import com.example.app3.data.model.Priority
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -1157,6 +1160,147 @@ fun DeleteConfirmationDialog(
         },
         shape = RoundedCornerShape(20.dp)
     )
+}
+
+// ============================================
+// Preview Functions
+// ============================================
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun EnhancedBudgetCardPreview() {
+    WishListSmartTheme {
+        Surface(modifier = Modifier.padding(16.dp)) {
+            EnhancedBudgetCard(
+                monthlySaving = 3000.0,
+                totalValue = 15000.0,
+                productCount = 5,
+                currency = "ر.س",
+                onSetupBudget = {},
+                shimmerTranslate = 500f
+            )
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun EnhancedProductCardPreview() {
+    val sampleProduct = Product(
+        1L,
+        "آيفون 15 برو ماكس",
+        6500.0,
+        null,
+        "تقنية",
+        Priority.HIGH,
+        null,
+        System.currentTimeMillis(),
+        false,
+        null,
+        "أحدث إصدار من آيفل"
+    )
+    
+    val productWithProgress = ProductWithProgress(
+        sampleProduct,
+        5,
+        40f,
+        "يونيو 2025"
+    )
+    
+    WishListSmartTheme {
+        Surface(modifier = Modifier.padding(16.dp)) {
+            EnhancedProductCard(
+                productWithProgress = productWithProgress,
+                currency = "ر.س",
+                onMarkPurchased = {},
+                onDelete = {}
+            )
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun QuickStatCardPreview() {
+    WishListSmartTheme {
+        Surface(modifier = Modifier.padding(16.dp)) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
+                QuickStatCard(
+                    modifier = Modifier.weight(1f),
+                    icon = Icons.Default.PriorityHigh,
+                    label = "أولوية عالية",
+                    value = "3",
+                    color = Error
+                )
+                
+                QuickStatCard(
+                    modifier = Modifier.weight(1f),
+                    icon = Icons.Default.Flag,
+                    label = "أقرب هدف",
+                    value = "2 شهر",
+                    color = Success
+                )
+            }
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun AnimatedFABPreview() {
+    WishListSmartTheme {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(200.dp)
+                .background(Background),
+            contentAlignment = Alignment.BottomEnd
+        ) {
+            AnimatedFAB(onClick = {})
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun EnhancedEmptyStatePreview() {
+    WishListSmartTheme {
+        Surface {
+            EnhancedEmptyState(
+                onAddClick = {},
+                onSetupBudgetClick = {}
+            )
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun FilterChipsRowPreview() {
+    WishListSmartTheme {
+        Surface(modifier = Modifier.padding(16.dp)) {
+            FilterChipsRow(
+                selectedFilter = "عالية",
+                onFilterSelected = {}
+            )
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun SectionHeaderPreview() {
+    WishListSmartTheme {
+        Surface(modifier = Modifier.padding(16.dp)) {
+            SectionHeader(
+                title = "قائمة أمنياتك",
+                count = 12
+            )
+        }
+    }
 }
 
 

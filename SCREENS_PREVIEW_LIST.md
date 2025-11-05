@@ -100,12 +100,59 @@ fun ProductCardPreview()
 
 ---
 
-### ⏳ 5. WishListScreenEnhanced
+### ✅ 5. WishListScreenEnhanced (المكونات)
 **المسار**: `app/src/main/java/com/example/app3/ui/screens/WishListScreenEnhanced.kt`
 
-**الحالة**: ⚠️ لا يحتوي على Preview بعد (شاشة معقدة تحتاج ViewModel)
+**دوال Preview**:
+```kotlin
+@Preview fun EnhancedBudgetCardPreview()
+@Preview fun EnhancedProductCardPreview()
+@Preview fun QuickStatCardPreview()
+@Preview fun AnimatedFABPreview()
+@Preview fun EnhancedEmptyStatePreview()
+@Preview fun FilterChipsRowPreview()
+@Preview fun SectionHeaderPreview()
+```
 
-**يمكن إضافة Preview مبسط لاحقاً**
+**المحتوى**: 
+- 7 معاينات للمكونات المختلفة
+- بطاقة الميزانية المحسنة
+- بطاقة المنتج المحسنة
+- إحصائيات سريعة
+- زر الإضافة العائم
+- حالة فارغة محسنة
+
+**كيفية المعاينة**:
+1. افتح `WishListScreenEnhanced.kt`
+2. اضغط **Split**
+3. ستجد 7 معاينات مختلفة!
+
+---
+
+### ✅ 6. CommonComponents
+**المسار**: `app/src/main/java/com/example/app3/ui/components/CommonComponents.kt`
+
+**دوال Preview**:
+```kotlin
+@Preview fun EmptyStateViewPreview()
+@Preview fun GradientCardPreview()
+@Preview fun PriorityChipsPreview()
+@Preview fun LoadingViewPreview()
+@Preview fun CategoryChipsPreview()
+```
+
+**المحتوى**:
+- 5 معاينات للمكونات المشتركة
+- حالة فارغة
+- بطاقة متدرجة
+- شرائح الأولوية (عالية، متوسطة، منخفضة)
+- شاشة التحميل
+- شرائح الفئات
+
+**كيفية المعاينة**:
+1. افتح `CommonComponents.kt`
+2. اضغط **Split**
+3. شاهد جميع المكونات!
 
 ---
 
@@ -172,7 +219,8 @@ fun MyPreview() { ... }
 | الميزانية | `BudgetScreen.kt` | `BudgetScreenPreview()` | ✅ جاهز |
 | العروض | `OffersScreen.kt` | `OffersScreenPreview()` | ✅ جاهز |
 | بطاقة منتج | `WishListScreen.kt` | `ProductCardPreview()` | ✅ جاهز |
-| القائمة المحسّنة | `WishListScreenEnhanced.kt` | - | ⏳ قريباً |
+| القائمة المحسّنة | `WishListScreenEnhanced.kt` | 7 معاينات | ✅ جاهز |
+| المكونات المشتركة | `CommonComponents.kt` | 5 معاينات | ✅ جاهز |
 
 ---
 
@@ -207,12 +255,31 @@ fun PreviewWithData() {
 
 ## 🎯 الخلاصة
 
-### ✅ لديك الآن 4 شاشات جاهزة للمعاينة:
+### ✅ لديك الآن جميع الشاشات والمكونات جاهزة للمعاينة:
 
+#### **الشاشات الرئيسية** (4):
 1. **AddProductScreen** - نموذج إضافة منتج
 2. **BudgetScreen** - إدارة الميزانية
 3. **OffersScreen** - قائمة العروض
 4. **WishListScreen** - بطاقة منتج
+
+#### **مكونات WishListScreenEnhanced** (7):
+5. **EnhancedBudgetCard** - بطاقة الميزانية المحسنة
+6. **EnhancedProductCard** - بطاقة المنتج المحسنة
+7. **QuickStatCard** - الإحصائيات السريعة
+8. **AnimatedFAB** - زر الإضافة العائم
+9. **EnhancedEmptyState** - الحالة الفارغة المحسنة
+10. **FilterChipsRow** - صف الفلاتر
+11. **SectionHeader** - عنوان القسم
+
+#### **المكونات المشتركة** (5):
+12. **EmptyStateView** - حالة فارغة عامة
+13. **GradientCard** - بطاقة متدرجة
+14. **PriorityChips** - شرائح الأولوية
+15. **LoadingView** - شاشة التحميل
+16. **CategoryChips** - شرائح الفئات
+
+**المجموع**: 🎉 **16 معاينة كاملة!**
 
 ### 📍 كيف تعرضها:
 
