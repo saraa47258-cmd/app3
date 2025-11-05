@@ -26,6 +26,7 @@ import coil.compose.AsyncImage
 import com.example.app3.data.model.Priority
 import com.example.app3.ui.theme.*
 import com.example.app3.ui.viewmodel.AddProductViewModel
+import androidx.compose.ui.tooling.preview.Preview
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -373,6 +374,124 @@ fun AddProductScreen(
                 }
             }
         )
+    }
+}
+
+@Preview(showBackground = true, locale = "ar")
+@Composable
+fun AddProductScreenPreview() {
+    WishListSmartTheme {
+        Surface {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp)
+                    .verticalScroll(rememberScrollState()),
+                verticalArrangement = Arrangement.spacedBy(20.dp)
+            ) {
+                // Preview of form elements
+                Text(
+                    "إضافة منتج جديد",
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.SemiBold
+                )
+                
+                // Image Section Preview
+                Card(
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(12.dp),
+                    colors = CardDefaults.cardColors(containerColor = CardBackground)
+                ) {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Text("صورة المنتج (اختياري)")
+                        Spacer(modifier = Modifier.height(12.dp))
+                        Box(
+                            modifier = Modifier
+                                .size(120.dp)
+                                .clip(RoundedCornerShape(12.dp))
+                                .background(Background),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Icon(Icons.Default.AddAPhoto, null, modifier = Modifier.size(48.dp))
+                        }
+                    }
+                }
+                
+                // Basic Info Preview
+                Card(
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(12.dp),
+                    colors = CardDefaults.cardColors(containerColor = CardBackground)
+                ) {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp),
+                        verticalArrangement = Arrangement.spacedBy(16.dp)
+                    ) {
+                        Text("المعلومات الأساسية", style = MaterialTheme.typography.titleMedium)
+                        OutlinedTextField(
+                            value = "آيفون 15 برو",
+                            onValueChange = {},
+                            label = { Text("اسم المنتج *") },
+                            modifier = Modifier.fillMaxWidth(),
+                            shape = RoundedCornerShape(12.dp)
+                        )
+                        OutlinedTextField(
+                            value = "5000",
+                            onValueChange = {},
+                            label = { Text("السعر (ر.س) *") },
+                            modifier = Modifier.fillMaxWidth(),
+                            shape = RoundedCornerShape(12.dp)
+                        )
+                    }
+                }
+                
+                // Priority Preview
+                Card(
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(12.dp),
+                    colors = CardDefaults.cardColors(containerColor = CardBackground)
+                ) {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp)
+                    ) {
+                        Text("الأولوية", style = MaterialTheme.typography.titleMedium)
+                        Spacer(modifier = Modifier.height(16.dp))
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(12.dp)
+                        ) {
+                            FilterChip(
+                                selected = false,
+                                onClick = {},
+                                label = { Text("عالية") },
+                                modifier = Modifier.weight(1f)
+                            )
+                            FilterChip(
+                                selected = true,
+                                onClick = {},
+                                label = { Text("متوسطة") },
+                                modifier = Modifier.weight(1f)
+                            )
+                            FilterChip(
+                                selected = false,
+                                onClick = {},
+                                label = { Text("منخفضة") },
+                                modifier = Modifier.weight(1f)
+                            )
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
