@@ -28,6 +28,9 @@ import com.example.app3.ui.components.GradientCard
 import com.example.app3.ui.components.PriorityChip
 import com.example.app3.ui.theme.*
 import com.example.app3.ui.viewmodel.WishListViewModel
+import androidx.compose.ui.tooling.preview.Preview
+import com.example.app3.data.model.Product
+import com.example.app3.data.model.Priority
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -559,6 +562,44 @@ fun ProductCard(
                     style = MaterialTheme.typography.bodySmall,
                     color = Warning,
                     fontWeight = FontWeight.Medium
+                )
+            }
+        }
+    }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun ProductCardPreview() {
+    val sampleProduct = Product(
+        id = 1,
+        name = "آيفون 15 برو",
+        price = 5000.0,
+        imageUri = null,
+        category = "تقنية",
+        priority = Priority.HIGH,
+        productUrl = null,
+        createdAt = System.currentTimeMillis(),
+        isPurchased = false,
+        purchasedDate = null,
+        notes = null
+    )
+    
+    val productWithProgress = ProductWithProgress(
+        product = sampleProduct,
+        monthsNeeded = 5,
+        progressPercentage = 40f,
+        estimatedDate = "مايو 2025"
+    )
+    
+    WishListSmartTheme {
+        Surface {
+            Column(modifier = Modifier.padding(16.dp)) {
+                ProductCard(
+                    productWithProgress = productWithProgress,
+                    currency = "ر.س",
+                    onMarkPurchased = {},
+                    onDelete = {}
                 )
             }
         }

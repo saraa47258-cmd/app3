@@ -340,121 +340,119 @@ fun BudgetScreen(
     }
 }
 
-@Preview(showBackground = true, locale = "ar")
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun BudgetScreenPreview() {
     WishListSmartTheme {
-        Surface {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(16.dp)
-                    .verticalScroll(rememberScrollState()),
-                verticalArrangement = Arrangement.spacedBy(20.dp)
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.background)
+                .padding(16.dp)
+                .verticalScroll(rememberScrollState()),
+            verticalArrangement = Arrangement.spacedBy(20.dp)
+        ) {
+            // Header
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                // Header
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(
-                        "إدارة الميزانية",
-                        style = MaterialTheme.typography.headlineMedium,
-                        fontWeight = FontWeight.Bold
-                    )
-                    Icon(Icons.Default.AccountBalance, null, tint = Primary)
-                }
-                
-                // Income Card
-                Card(
-                    modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(16.dp),
-                    colors = CardDefaults.cardColors(containerColor = CardBackground)
-                ) {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(20.dp),
-                        verticalArrangement = Arrangement.spacedBy(16.dp)
-                    ) {
-                        Text("الدخل الشهري", style = MaterialTheme.typography.titleMedium)
-                        OutlinedTextField(
-                            value = "10000",
-                            onValueChange = {},
-                            label = { Text("الدخل الشهري (ر.س)") },
-                            modifier = Modifier.fillMaxWidth(),
-                            shape = RoundedCornerShape(12.dp)
-                        )
-                    }
-                }
-                
-                // Expenses Card
-                Card(
-                    modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(16.dp),
-                    colors = CardDefaults.cardColors(containerColor = CardBackground)
-                ) {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(20.dp),
-                        verticalArrangement = Arrangement.spacedBy(16.dp)
-                    ) {
-                        Text("المصروفات الثابتة", style = MaterialTheme.typography.titleMedium)
-                        OutlinedTextField(
-                            value = "5000",
-                            onValueChange = {},
-                            label = { Text("المصروفات الشهرية (ر.س)") },
-                            modifier = Modifier.fillMaxWidth(),
-                            shape = RoundedCornerShape(12.dp)
-                        )
-                    }
-                }
-                
-                // Savings Card
-                Card(
-                    modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(16.dp),
-                    colors = CardDefaults.cardColors(containerColor = CardBackground)
-                ) {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(20.dp),
-                        verticalArrangement = Arrangement.spacedBy(16.dp)
-                    ) {
-                        Text("الادخار الشهري", style = MaterialTheme.typography.titleMedium)
-                        OutlinedTextField(
-                            value = "1500",
-                            onValueChange = {},
-                            label = { Text("الادخار الشهري (ر.س)") },
-                            modifier = Modifier.fillMaxWidth(),
-                            shape = RoundedCornerShape(12.dp)
-                        )
-                        
-                        // Progress Indicator
-                        Column(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalAlignment = Alignment.CenterHorizontally
-                        ) {
-                            Text("نسبة الادخار: 30%", color = Success, fontWeight = FontWeight.SemiBold)
-                        }
-                    }
-                }
-                
-                // Save Button
-                Button(
-                    onClick = {},
+                Text(
+                    "إدارة الميزانية",
+                    style = MaterialTheme.typography.headlineMedium,
+                    fontWeight = FontWeight.Bold
+                )
+                Icon(Icons.Default.AccountBalance, null, tint = Primary)
+            }
+            
+            // Income Card
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(16.dp),
+                colors = CardDefaults.cardColors(containerColor = CardBackground)
+            ) {
+                Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(56.dp),
-                    shape = RoundedCornerShape(12.dp)
+                        .padding(20.dp),
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
-                    Icon(Icons.Default.Save, null)
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text("حفظ الميزانية")
+                    Text("الدخل الشهري", style = MaterialTheme.typography.titleMedium)
+                    OutlinedTextField(
+                        value = "10000",
+                        onValueChange = {},
+                        label = { Text("الدخل الشهري (ر.س)") },
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(12.dp)
+                    )
                 }
+            }
+            
+            // Expenses Card
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(16.dp),
+                colors = CardDefaults.cardColors(containerColor = CardBackground)
+            ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(20.dp),
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
+                    Text("المصروفات الثابتة", style = MaterialTheme.typography.titleMedium)
+                    OutlinedTextField(
+                        value = "5000",
+                        onValueChange = {},
+                        label = { Text("المصروفات الشهرية (ر.س)") },
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(12.dp)
+                    )
+                }
+            }
+            
+            // Savings Card
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(16.dp),
+                colors = CardDefaults.cardColors(containerColor = CardBackground)
+            ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(20.dp),
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
+                    Text("الادخار الشهري", style = MaterialTheme.typography.titleMedium)
+                    OutlinedTextField(
+                        value = "1500",
+                        onValueChange = {},
+                        label = { Text("الادخار الشهري (ر.س)") },
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(12.dp)
+                    )
+                    
+                    Text(
+                        "نسبة الادخار: 30%",
+                        color = Success,
+                        fontWeight = FontWeight.SemiBold,
+                        modifier = Modifier.align(Alignment.CenterHorizontally)
+                    )
+                }
+            }
+            
+            // Save Button
+            Button(
+                onClick = {},
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(56.dp),
+                shape = RoundedCornerShape(12.dp)
+            ) {
+                Icon(Icons.Default.Save, null)
+                Spacer(modifier = Modifier.width(8.dp))
+                Text("حفظ الميزانية")
             }
         }
     }

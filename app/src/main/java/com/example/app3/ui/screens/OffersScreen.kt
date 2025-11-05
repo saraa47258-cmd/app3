@@ -28,6 +28,7 @@ import com.example.app3.ui.theme.*
 import com.example.app3.ui.viewmodel.OffersViewModel
 import java.text.SimpleDateFormat
 import java.util.*
+import androidx.compose.ui.tooling.preview.Preview
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -382,5 +383,193 @@ fun OfferCard(
 private fun formatDate(timestamp: Long): String {
     val sdf = SimpleDateFormat("dd MMM yyyy", Locale("ar"))
     return sdf.format(Date(timestamp))
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun OffersScreenPreview() {
+    WishListSmartTheme {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.background)
+        ) {
+            // Header
+            Surface(
+                modifier = Modifier.fillMaxWidth(),
+                color = MaterialTheme.colorScheme.surface,
+                shadowElevation = 2.dp
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Surface(
+                        shape = CircleShape,
+                        color = Secondary.copy(alpha = 0.15f),
+                        modifier = Modifier.size(32.dp)
+                    ) {
+                        Box(contentAlignment = Alignment.Center) {
+                            Icon(
+                                Icons.Default.LocalOffer,
+                                contentDescription = null,
+                                tint = Secondary,
+                                modifier = Modifier.size(18.dp)
+                            )
+                        }
+                    }
+                    Spacer(modifier = Modifier.width(12.dp))
+                    Text(
+                        "العروض والخصومات",
+                        style = MaterialTheme.typography.titleLarge,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+            }
+            
+            // Sample Offers
+            LazyColumn(
+                modifier = Modifier.fillMaxSize(),
+                contentPadding = PaddingValues(16.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                items(3) { index ->
+                    Card(
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(20.dp),
+                        colors = CardDefaults.cardColors(
+                            containerColor = MaterialTheme.colorScheme.surface
+                        ),
+                        elevation = CardDefaults.cardElevation(defaultElevation = 3.dp)
+                    ) {
+                        Column(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(20.dp)
+                        ) {
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.Top
+                            ) {
+                                Column(modifier = Modifier.weight(1f)) {
+                                    Text(
+                                        if (index == 0) "آيفون 15 برو" 
+                                        else if (index == 1) "سماعات AirPods Pro"
+                                        else "ساعة Apple Watch",
+                                        style = MaterialTheme.typography.titleLarge,
+                                        fontWeight = FontWeight.Bold
+                                    )
+                                    Spacer(modifier = Modifier.height(4.dp))
+                                    Text(
+                                        if (index == 0) "متجر إلكتروني"
+                                        else if (index == 1) "عرض خاص"
+                                        else "تخفيض موسمي",
+                                        style = MaterialTheme.typography.bodyMedium,
+                                        color = TextSecondary
+                                    )
+                                }
+                                
+                                Surface(
+                                    shape = RoundedCornerShape(12.dp),
+                                    color = if (index == 0) Error.copy(alpha = 0.15f)
+                                           else if (index == 1) Warning.copy(alpha = 0.15f)
+                                           else Success.copy(alpha = 0.15f)
+                                ) {
+                                    Text(
+                                        if (index == 0) "15%" 
+                                        else if (index == 1) "20%"
+                                        else "10%",
+                                        modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
+                                        style = MaterialTheme.typography.titleMedium,
+                                        fontWeight = FontWeight.Bold,
+                                        color = if (index == 0) Error
+                                               else if (index == 1) Warning
+                                               else Success
+                                    )
+                                }
+                            }
+                            
+                            Spacer(modifier = Modifier.height(16.dp))
+                            
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.Bottom
+                            ) {
+                                Column {
+                                    Text(
+                                        "السعر الأصلي",
+                                        style = MaterialTheme.typography.labelSmall,
+                                        color = TextSecondary
+                                    )
+                                    Text(
+                                        if (index == 0) "5000 ر.س"
+                                        else if (index == 1) "999 ر.س"
+                                        else "1800 ر.س",
+                                        style = MaterialTheme.typography.bodyMedium,
+                                        textDecoration = TextDecoration.LineThrough,
+                                        color = TextSecondary
+                                    )
+                                }
+                                
+                                Column {
+                                    Text(
+                                        "بعد الخصم",
+                                        style = MaterialTheme.typography.labelSmall,
+                                        color = Success
+                                    )
+                                    Text(
+                                        if (index == 0) "4250 ر.س"
+                                        else if (index == 1) "799 ر.س"
+                                        else "1620 ر.س",
+                                        style = MaterialTheme.typography.titleLarge,
+                                        fontWeight = FontWeight.Bold,
+                                        color = Success
+                                    )
+                                }
+                            }
+                            
+                            Spacer(modifier = Modifier.height(16.dp))
+                            
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    Icon(
+                                        Icons.Default.Timer,
+                                        contentDescription = null,
+                                        modifier = Modifier.size(16.dp),
+                                        tint = Warning
+                                    )
+                                    Spacer(modifier = Modifier.width(4.dp))
+                                    Text(
+                                        if (index == 0) "ينتهي خلال 30 يوم"
+                                        else if (index == 1) "ينتهي خلال 15 يوم"
+                                        else "ينتهي خلال 7 أيام",
+                                        style = MaterialTheme.typography.bodySmall,
+                                        color = Warning
+                                    )
+                                }
+                                
+                                Button(
+                                    onClick = {},
+                                    shape = RoundedCornerShape(12.dp)
+                                ) {
+                                    Icon(Icons.Default.OpenInNew, null, modifier = Modifier.size(18.dp))
+                                    Spacer(modifier = Modifier.width(4.dp))
+                                    Text("فتح العرض")
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
