@@ -571,25 +571,26 @@ fun ProductCard(
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun ProductCardPreview() {
+    // Using positional arguments for Java classes
     val sampleProduct = Product(
-        id = 1,
-        name = "آيفون 15 برو",
-        price = 5000.0,
-        imageUri = null,
-        category = "تقنية",
-        priority = Priority.HIGH,
-        productUrl = null,
-        createdAt = System.currentTimeMillis(),
-        isPurchased = false,
-        purchasedDate = null,
-        notes = null
+        1L,                           // id
+        "آيفون 15 برو",              // name
+        5000.0,                       // price
+        null,                         // imageUri
+        "تقنية",                     // category
+        Priority.HIGH,                // priority
+        null,                         // productUrl
+        System.currentTimeMillis(),   // createdAt
+        false,                        // isPurchased
+        null,                         // purchasedDate
+        null                          // notes
     )
     
     val productWithProgress = ProductWithProgress(
-        product = sampleProduct,
-        monthsNeeded = 5,
-        progressPercentage = 40f,
-        estimatedDate = "مايو 2025"
+        sampleProduct,                // product
+        5,                            // monthsNeeded
+        40f,                          // progressPercentage
+        "مايو 2025"                   // estimatedDate
     )
     
     WishListSmartTheme {
